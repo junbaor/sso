@@ -25,13 +25,12 @@ public class App extends WebMvcConfigurerAdapter {
             public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
                 HttpSession session = httpServletRequest.getSession();
 
-                if (session.getAttribute("CLIENT_LOGIN_USER") == null) {
-                    Object loginUser = session.getAttribute("CLIENT_LOGIN_USER");
-                    if (loginUser == null) {
-                        httpServletResponse.sendRedirect("http://sso.com:8080/login?systemName=adm&callbackUrl=" + httpServletRequest.getRequestURI());
-                        return false;
-                    }
+                Object loginUser = session.getAttribute("CLIENT_LOGIN_USER");
+                if (loginUser == null) {
+                    httpServletResponse.sendRedirect("http://sso.com:8080/login?systemName=adm&callbackUrl=" + httpServletRequest.getRequestURI());
+                    return false;
                 }
+
                 return true;
             }
 
