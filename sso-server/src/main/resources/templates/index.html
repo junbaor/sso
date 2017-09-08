@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head lang="en">
+    <meta charset="UTF-8"/>
+    <title>sso server</title>
+</head>
+<body>
+<form action="login" method="post">
+    用户名<input type="text" name="name"/><br/>
+    密码<input type="password" name="pass"/><br/>
+    <input type="hidden" name="systemName" th:value="${systemName}"/>
+    <input type="hidden" name="callbackUrl" th:value="${callbackUrl}"/>
+    <input type="submit" value="登录"/>
+</form>
+</body>
+</html>
